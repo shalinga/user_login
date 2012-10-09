@@ -7,6 +7,24 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "User Login"
 
+  config.namespace :admin do |admin|
+    admin.site_title = "User Login admin area"
+    admin.root_to = "dashboard#index"
+  end
+  config.namespace :members do |members|
+    members.site_title = "User Login member area"
+    members.root_to = "dashboard#index"
+  end
+  
+  ActiveAdmin::Views::Pages::Base.class_eval do
+    private
+
+    def build_footer
+      div :id => "footer" do
+        para "#{link_to('Terms of services',terms_of_services_path)} &mdash; Powered by #{link_to("Active Admin", "http://www.activeadmin.info")} #{ActiveAdmin::VERSION}".html_safe
+      end
+    end
+  end
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #

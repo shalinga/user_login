@@ -4,14 +4,10 @@ UserLogin::Application.routes.draw do
 
   devise_for :users, ActiveAdmin::Devise.config
 
-  devise_for :users
+  # devise_for :users
   # devise_for :users, :path => '/', :path_names => { :login => 'login', :logout => 'logout', :sign_up => 'register' } 
 
   # resources :users
-
-  resources :books
-  
- match '/' => 'devise/sessions#destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
